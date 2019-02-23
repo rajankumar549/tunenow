@@ -77,5 +77,5 @@ app.use(function (err, req, res, next) {
 })
 
 
-app.listen(config.port, () => console.log(`Server running on port ${config.port}`));
+app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
 module.exports = app;
