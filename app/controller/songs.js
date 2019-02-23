@@ -32,16 +32,16 @@ exports.getAll = async function getQuota(req, res) {
     try {
         
         let songs = await models.Songs.find(searchQuery).skip(skip).limit(limit).sort(sortQuery).exec();
-        // let count = await models.Songs.countDocuments(searchQuery);
-        // let total = await models.Songs.countDocuments();
+        let count = await models.Songs.countDocuments(searchQuery);
+        let total = await models.Songs.countDocuments();
         return res.json({success:true,data:{
             songs:songs,
-            // pagination : {
-            //     page: page,
-            //     limit: limit,
-            //     count: count,
-            //     total: total
-            // }
+            pagination : {
+                page: page,
+                limit: limit,
+                count: count,
+                total: total
+            }
         }});
     } catch (err) {
         console.log(err)
